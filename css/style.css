@@ -8,4 +8,54 @@
 body {
     height: 100vh;
     padding: 1rem;
+    background: linear-gradient(135deg, #0355FF, #141722);
+}
+
+.title-game {
+    font-family: 'Kalnia', serif;
+    font-size: 5rem;
+    text-align: center;
+    padding: 1rem;
+    color: whitesmoke;
+}
+
+.playing-user {
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    padding: 1.5rem;
+    color: whitesmoke;
+}
+
+.tris-grid-container {
+    width: 560px;
+    height: 560px;
+    margin: auto;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    aspect-ratio: 1/1;
+}
+
+.square {
+    aspect-ratio: 1/1;
+    width: 33.3%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+i {
+    font-size: 2rem;
+    color: whitesmoke;
+}
+
+.clicked-square-player1 {
+    background-color: #0355FF;
+}
+
+.clicked-square-player2 {
+    background-color: #141722;
 }
