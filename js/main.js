@@ -18,8 +18,25 @@ const trisGridContainer = document.querySelector(".tris-grid-container");
 // @ts-ignore
 const playingUser = document.querySelector(".playing-user");
 
-let userPlaying = 1;
+/**
+ * @type {HTMLDivElement}
+ */
+// @ts-ignore
+const endGameScreen = document.querySelector('.end-game-screen');
 
+/**
+ * @type {HTMLTitleElement}
+ */
+// @ts-ignore
+const endGameText = document.querySelector('.end-game-text');
+
+/**
+ * @type {HTMLButtonElement}
+ */
+// @ts-ignore
+const playAgainButton = document.querySelector('.play-again')
+
+let userPlaying = 1;
 let user1Moves = [];
 let user2Moves = [];
 const possibleSolutions = [
@@ -35,8 +52,6 @@ const possibleSolutions = [
   "0,4,8",
   "6,4,2",
 ];
-
-
 
 /* ----------
 
@@ -107,6 +122,9 @@ function onSquareClick() {
     }
 
     if (result) {
+        endGameScreen.classList.remove('hidden');
+        endGameScreen.classList.add('win');
+        endGameText.innerHTML = `PLAYER ${userPlaying} <br> WIN`;
         console.log(`L'utente ${userPlaying} ha vinto!`);
         return;
     }
