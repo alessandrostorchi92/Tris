@@ -125,10 +125,13 @@ function onSquareClick() {
         endGameScreen.classList.remove('hidden');
         endGameScreen.classList.add('win');
         endGameText.innerHTML = `PLAYER ${userPlaying} <br> WIN`;
-        console.log(`L'utente ${userPlaying} ha vinto!`);
+        //? console.log(`L'utente ${userPlaying} ha vinto!`); OK!
+        playAgainButton.addEventListener("click", function() {
+            location.reload();
+        });
         return;
     }
-    console.log("Result:", result);
+    //? console.log("Result:", result); OK!
 
     this.dataset.user = userPlaying.toString();
     updatePlayingUser(true);
