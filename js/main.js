@@ -132,7 +132,7 @@ function onSquareClick() {
     if (result) {
         endGameScreen.classList.remove('hidden');
         endGameScreen.classList.add('win');
-        endGameText.innerHTML = `PLAYER ${userPlaying} <br> WIN`;
+        endGameText.innerHTML = `PLAYER ${userPlaying} <br> WINS`;
         //? console.log(`L'utente ${userPlaying} ha vinto!`); OK!
         return;
     } else {
