@@ -87,6 +87,14 @@ function createGrid(container) {
 }
 
 // TODO: Setting up of the features of the addEventListener
+
+//* Invocation of the function which restarts the game
+playAgainButton.addEventListener("click", onPlayAgainClick);
+
+function onPlayAgainClick() {
+    location.reload();
+};
+
 /**
  * This function activates features once you click on the square
  * @this {HTMLDivElement} the keyword this has "square" as value, on the
@@ -110,15 +118,15 @@ function onSquareClick() {
 
         user1Moves.push(this.dataset.numberSquare);
         console.log(user1Moves);
-        result = checkResult(user1Moves);
+        result = checkIfPlayersWin(user1Moves);
 
-    }else{
+    } else{
         this.classList.add("clicked-square-player2");
         this.innerHTML = "<i class='fa-solid fa-o'></i>";
 
         user2Moves.push(this.dataset.numberSquare);
         console.log(user2Moves);
-        result = checkResult(user2Moves);
+        result = checkIfPlayersWin(user2Moves);
     }
 
     if (result) {
@@ -126,10 +134,9 @@ function onSquareClick() {
         endGameScreen.classList.add('win');
         endGameText.innerHTML = `PLAYER ${userPlaying} <br> WIN`;
         //? console.log(`L'utente ${userPlaying} ha vinto!`); OK!
-        playAgainButton.addEventListener("click", function() {
-            location.reload();
-        });
         return;
+    } else {
+        checkIfPlayersDraw();
     }
     //? console.log("Result:", result); OK!
 
@@ -140,7 +147,7 @@ function onSquareClick() {
 // TODO: player turn management
 
 /**
- * This function change the turn of the players
+ * This function changes the turn of the players
  * @param {boolean} changePlayer if the value is true the turn of the player changes
  */
 function updatePlayingUser(changePlayer) {
@@ -163,7 +170,7 @@ function updatePlayingUser(changePlayer) {
  * @returns {boolean}
  */
 
-function checkResult(userMoves) {
+function checkIfPlayersWin(userMoves) {
     const moves = userMoves.sort().join();
     let hasWon = false;
 
@@ -176,4 +183,18 @@ function checkResult(userMoves) {
     }
 
     return hasWon
+}
+
+// TODO: checking if players have drawn
+
+/**
+ * This function verifies if the players have drawn
+ */
+function checkIfPlayersDraw() {
+    if (user1Moves.length + user2Moves.length === 9) {
+        endGameScreen.classList.remove('hidden');
+        endGameScreen.classList.add('draw');
+        endGameText.textContent = "DRAW";
+      }
+
 }
